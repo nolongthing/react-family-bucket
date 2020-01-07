@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, lazy, Suspense } from 'react';
 import styles from './sub.module.scss';
 
@@ -20,7 +21,12 @@ export default function Sub() {
     function createNav() {
         let str = [];
         for (const k in navBar) {
-            str.push(<span onClick={() => { handleTabbar(k) }} className={styles[current == k ? 'choosed' : '']} key={k}>{navBar[k]}</span>);
+            str.push(
+                <span
+                    onClick={() => { handleTabbar(k) }}
+                    className={styles[current == k ? 'choosed' : '']}
+                    key={k}
+                >{navBar[k]}</span>);
         }
         return str;
     }
