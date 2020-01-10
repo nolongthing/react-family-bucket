@@ -1,0 +1,14 @@
+.btn{
+    height: 0.5rem;
+    width: 1.5rem;
+    background-color: #ff7015;
+    margin: 0.2rem 0.3rem;
+    border: 1px solid transparent; 
+    outline: none;
+    color: #fff;
+    border-radius: 0.1rem;
+    user-select: none;
+    &:active{
+        background-color: #fcbc95;
+    }
+}
