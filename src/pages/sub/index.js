@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React, { useState, lazy, Suspense } from 'react';
 import styles from './sub.module.scss';
+import { getAllStudents } from '../../apiService';
 
 const navBar = {
     'TgSub': '投顾工作室',
@@ -9,6 +10,7 @@ const navBar = {
 export default function Sub() {
     const [current, setCurrent] = useState('TgSub');
 
+    //模块懒加载
     let Tab = lazy(() => import(`./components/${current}`));
 
     function handleTabbar(k) {
@@ -18,7 +20,13 @@ export default function Sub() {
         setCurrent(k);
     }
 
+    async function getstudents() {
+        const { data } = await getAllStudents();
+        console.log(data);
+    }
+
     function createNav() {
+        getstudents();
         let str = [];
         for (const k in navBar) {
             str.push(
