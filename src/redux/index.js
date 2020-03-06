@@ -1,5 +1,7 @@
-import { createStore, bindActionCreators } from 'redux';
+import { bindActionCreators, applyMiddleware, createStore } from 'redux';
+// import { createStore } from '../reduxx/index';
 import * as getActions from './action/index';
+import thunk from 'thunk';
 
 function reducer(state, action) {
     if (action.type === 'login') {
@@ -12,7 +14,7 @@ function reducer(state, action) {
     return state;
 }
 
-const store = createStore(reducer, false);
+const store = createStore(reducer, applyMiddleware(thunk));
 
 export default {
     Actions:bindActionCreators(getActions, store.dispatch),
