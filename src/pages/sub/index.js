@@ -40,7 +40,8 @@ export default function Sub() {
     }
     return (
         <div className={styles['container']}>
-            <div className={styles['title']}>
+            {/* 使用多个style类名 */}
+            <div className={`${styles['title']} ${styles['second-style']}`}>
                 订阅设置
             </div>
             <div className={styles['nav-bar']}>
