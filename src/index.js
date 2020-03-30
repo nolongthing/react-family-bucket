@@ -5,7 +5,6 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 // import VConsole from 'vconsole';
 
-import './redux/index';
 
 // new VConsole();
 ReactDOM.render(<App />, document.getElementById('root'));
