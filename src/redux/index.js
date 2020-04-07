@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { bindActionCreators, applyMiddleware, createStore } from 'redux';
 // import { createStore } from '../reduxx/index';
 import * as getActions from './action/index';
