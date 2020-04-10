@@ -7,6 +7,7 @@ import Monthly from './pages/monthly';
 import MultistageRouter from './pages/multistageRouter';
 import Home from './pages/multistageRouter/components/home';
 import Download from './pages/multistageRouter/components/download';
+import Table from './pages/table';
 import './App.css';
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
               </Switch>
             </MultistageRouter>
           } />
+          <Route path='/table' component={Table} />
         </Switch>
       </Router>
     </div>
