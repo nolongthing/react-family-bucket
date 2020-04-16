@@ -1,8 +1,7 @@
 /* eslint-disable */
 import React, { useState, lazy, Suspense } from 'react';
 import styles from './sub.module.scss';
-import { getAllStudents } from '../../apiService';
-
+import { getAllStudents } from 'apiService';
 const navBar = {
     'TgSub': '投顾工作室',
     'CFSub': '财富工作室'

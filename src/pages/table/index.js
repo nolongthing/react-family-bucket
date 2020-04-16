@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import styles from './table.module.scss';
 import data from './data.js';
 export default function Table() {
