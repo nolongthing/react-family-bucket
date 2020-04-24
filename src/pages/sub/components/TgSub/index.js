@@ -16,6 +16,7 @@ function TgSub(props) {
             <button onClick={handleLogin}>点击跳转登陆</button>
             <div>显示登陆状态：{getState() ? '已登录' : '未登录'}</div>
             <Pay className={styles.icon} />
+            <div className={styles.line}></div>
         </div>
     )
 }

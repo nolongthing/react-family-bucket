@@ -1,5 +1,15 @@
-.icon{
+.icon {
   height: 1em;
   width: 1em;
   fill: red;
+}
+
+.line {
+  display: inline-block;
+  width: 13px;
+  height: 21px;
+  background: linear-gradient(0deg, rgba(211, 182, 150, 1), rgba(140, 111, 77, 1));
+  border-radius: 3px;
+  transform: rotate(30deg);
+  transform-origin: bottom center;
 }
