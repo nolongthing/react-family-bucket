@@ -1,32 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import styles from './login.module.scss';
-import store from '../../redux/index';
 import { asyncSetLoginType, getLogoutAction, getLoginAction } from '../../redux/action';
 
-
 function Login(props) {
-  const { dispatch, getState } = store;
-  const [state, setState] = useState(getState().loginType);
-
+  console.log(props);
   function handleLogin() {
-    console.log(props);
-    // Actions.getLoginAction();
-    dispatch(getLoginAction());
-    setState(getState().loginType);
-    // props.history.goBack();
+    props.onLogin();
   }
 
   function handleLogout() {
-    // Actions.getLogoutAction();
-    dispatch(getLogoutAction());
-    setState(getState().loginType);
+    props.onLogout();
   }
 
   async function handleRow() {
-    dispatch(asyncSetLoginType());
-    // const type = getState().loginType;
-    // setState();
+    props.onRowLog();
   }
 
   return (
@@ -36,9 +25,36 @@ function Login(props) {
       <button onClick={handleLogout} className={styles['btn']}>点我退出</button>
       <button onClick={handleRow} className={styles['btn']}>随机登录态</button>
       <div>
-        当前的登陆状态为：{`${state}`}
+        当前的登陆状态为：{`${props.loginType}`}
       </div>
     </div>
   )
 }
-export default withRouter(Login);
+
+// 以下部分可以抽离成为一个容器组件，Login作为展示组件引入
+/* 商店状态与props的映射函数 */
+const mapStateToProps =(state)=>{
+  return {
+    loginType:state.loginType
+  };
+}
+
+/* 商店分发与props的映射函数 */
+const mapDispatchToProps=(dispatch)=>{
+  return{
+    onLogin:()=>{
+      dispatch(getLoginAction());
+    },
+    onLogout:()=>{
+      dispatch(getLogoutAction());
+    },
+    onRowLog:()=>{
+      dispatch(asyncSetLoginType());
+    }
+  }
+}
+
+/* 使用react-redux提供的connect函数创建容器组件 */
+const LoginAction = connect(mapStateToProps,mapDispatchToProps)(withRouter(Login))
+
+export default LoginAction;

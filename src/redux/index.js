@@ -1,7 +1,7 @@
 /* eslint-disable */
-import { bindActionCreators, applyMiddleware, createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 // import { createStore } from '../reduxx/index';
-import * as getActions from './action/index';
+// import * as getActions from './action/index';
 import reducer from './reducer';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';

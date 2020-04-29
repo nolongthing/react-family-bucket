@@ -1,4 +1,4 @@
-export default function reducer(state = {}, action) {
+export default function reducer(state = {loginType:false}, action) {
   if (action.type === 'login') {
       return {
         ...state,
