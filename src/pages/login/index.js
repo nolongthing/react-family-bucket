@@ -18,6 +18,10 @@ function Login(props) {
     props.onRowLog();
   }
 
+  function handleGoBack() {
+    props.history.goBack();
+  }
+
   return (
     <div>
       这是登陆页
@@ -27,34 +31,35 @@ function Login(props) {
       <div>
         当前的登陆状态为：{`${props.loginType}`}
       </div>
+      <button onClick={handleGoBack}>回退</button>
     </div>
   )
 }
 
 // 以下部分可以抽离成为一个容器组件，Login作为展示组件引入
 /* 商店状态与props的映射函数 */
-const mapStateToProps =(state)=>{
+const mapStateToProps = (state) => {
   return {
-    loginType:state.loginType
+    loginType: state.loginType
   };
 }
 
 /* 商店分发与props的映射函数 */
-const mapDispatchToProps=(dispatch)=>{
-  return{
-    onLogin:()=>{
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onLogin: () => {
       dispatch(getLoginAction());
     },
-    onLogout:()=>{
+    onLogout: () => {
       dispatch(getLogoutAction());
     },
-    onRowLog:()=>{
+    onRowLog: () => {
       dispatch(asyncSetLoginType());
     }
   }
 }
 
 /* 使用react-redux提供的connect函数创建容器组件 */
-const LoginAction = connect(mapStateToProps,mapDispatchToProps)(withRouter(Login))
+const LoginAction = connect(mapStateToProps, mapDispatchToProps)(withRouter(Login))
 
 export default LoginAction;
