@@ -1,7 +1,8 @@
 /* eslint-disable */
-import React, { useState, lazy, Suspense } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import styles from './sub.module.scss';
 import { getAllStudents } from 'apiService';
+import axios from 'axios';
 const navBar = {
     'TgSub': '投顾工作室',
     'CFSub': '财富工作室'
@@ -12,6 +13,15 @@ export default function Sub() {
     //模块懒加载
     let Tab = lazy(() => import(`./components/${current}`));
 
+
+
+    useEffect(() => {
+        /* 开发环境代理 */
+        // axios.get('http://47.103.124.146:3000/test').then(res=>{
+        //     console.log(res);
+        // })
+    }, [])
+
     function handleTabbar(k) {
         if (k == current) {
             return
@@ -19,13 +29,13 @@ export default function Sub() {
         setCurrent(k);
     }
 
-    async function getstudents() {
-        const { data } = await getAllStudents();
-        console.log(data);
-    }
+    // async function getstudents() {
+    //     const { data } = await getAllStudents();
+    //     console.log(data);
+    // }
 
     function createNav() {
-        getstudents();
+        // getstudents();
         let str = [];
         for (const k in navBar) {
             str.push(
